@@ -1,28 +1,3 @@
-// mobile styling
-.f1dex {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    &__body {
-        display: flex;
-        flex-direction: column;
-    }
+body {
+    background-color: #ebeae6;
 }
-
-// desktop styling
-@media (min-width: 768px) {
-    .f1dex {
-        &__body {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 2rem;
-
-            &__search, &__results {
-                flex: 1;
-            }
-        }
-    }
-}
-
