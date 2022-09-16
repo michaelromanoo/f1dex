@@ -12,16 +12,8 @@ export const useFetch = (url) => {
 		fetch(url, { signal: abort.signal })
 			.then((response) => response.json())
 			.then((data) => {
-				console.log('data', data);
-				// create new array and add new property for full name
-				// get drivers table
-				let newArr = data.MRData.DriverTable.Drivers.map((obj) => ({
-					...obj,
-					fullName: obj.givenName + ' ' + obj.familyName,
-				}));
-				console.log('new data', newArr);
 				setState({
-					data: newArr,
+					data: data,
 					loading: false,
 				});
 			})
