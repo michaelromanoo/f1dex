@@ -54,6 +54,7 @@ function App() {
 				<div className='f1dex__body__search'>
 					<div className='f1dex__body__search__input'>
 						<input
+							className='input'
 							type='search'
 							id='search'
 							name='search'
@@ -72,7 +73,9 @@ function App() {
 											className='f1dex__drivers__list__item'
 											onClick={() => getDriverInfo(driver.driverId)}
 										>
-											{driver.givenName} {driver.familyName}
+											<p>
+												{driver.givenName} {driver.familyName}
+											</p>
 										</li>
 								  ))
 								: driversList.map((driver) => (
@@ -81,7 +84,9 @@ function App() {
 											className='f1dex__drivers__list__item'
 											onClick={() => getDriverInfo(driver.driverId)}
 										>
-											{driver.givenName} {driver.familyName}
+											<p>
+												{driver.givenName} {driver.familyName}
+											</p>
 										</li>
 								  ))}
 						</ul>
