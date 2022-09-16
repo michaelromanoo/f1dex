@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useFetch } from './api/useFetch';
 import logo from './assets/logo-new.png';
+import Result from './components/Results';
 import './App.scss';
 
 function App() {
@@ -92,20 +93,7 @@ function App() {
 						</ul>
 					</div>
 				</div>
-				<div className='f1dex__body__results'>
-					{driverInfoData.length > 0 &&
-						driverInfoData.map((driver) => (
-							<div key={driver.driverId}>
-								<h1>
-									{driver.givenName} {driver.familyName}
-								</h1>
-								<p>Code: {driver.code}</p>
-								<p>Nationality: {driver.nationality}</p>
-								<p>Number: {driver.permanentNumber}</p>
-								<p></p>
-							</div>
-						))}
-				</div>
+				<Result data={driverInfoData} />
 			</div>
 		</div>
 	);
