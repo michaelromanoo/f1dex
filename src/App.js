@@ -4,21 +4,30 @@ import logo from './assets/logo-new.png';
 import './App.scss';
 
 function App() {
-	// destructure returned state from useFetch which includes data & loading
+	// pass a driver id as a default value, or else data wonr be fetched
+	const [driverId, setDriverId] = useState('albon');
+	const [filteredArr, setFilteredArr] = useState([]);
+
+	// fetch data list of all drivers in 2022 season
 	const { data, loading } = useFetch(
 		`http://ergast.com/api/f1/2022/drivers.json`
 	);
-	// useState is needed as the view needs to re-render everytime the search term changes
-	const [filteredArr, setFilteredArr] = useState([]);
 
-	if (loading === true) return <div>Loading...</div>;
+	// fetch driver info by driver id
+	const { data: driverInfo, loading: driverInfoLoading } = useFetch(
+		`http://ergast.com/api/f1/drivers/${driverId}.json`
+	);
+
+	if (loading || driverInfoLoading) return <div>Loading...</div>;
 
 	// create new array and add new property for full name
 	const driversList = data.MRData.DriverTable.Drivers.map((obj) => ({
 		...obj,
 		fullName: obj.givenName + ' ' + obj.familyName,
 	}));
-	console.log('drivers list', driversList);
+
+	// get driver info data
+	const driverInfoData = driverInfo.MRData.DriverTable.Drivers;
 
 	// filter api results with search term
 	const filterApiResults = (val) => {
@@ -29,6 +38,13 @@ function App() {
 		console.log('filtered arr', filteredArr);
 		setFilteredArr(filteredArr);
 	};
+
+	// get driver information from id
+	const getDriverInfo = (id) => {
+		console.log('driver id', id);
+		setDriverId(id);
+	};
+
 	return (
 		<div className='f1dex'>
 			<div className='f1dex__header'>
@@ -50,28 +66,41 @@ function App() {
 					<div className='f1dex__body__search__results'>
 						<ul className='f1dex__drivers__list'>
 							{filteredArr.length > 0
-								? filteredArr.map((drivers) => (
+								? filteredArr.map((driver) => (
 										<li
-											key={drivers.driverId}
+											key={driver.driverId}
 											className='f1dex__drivers__list__item'
+											onClick={() => getDriverInfo(driver.driverId)}
 										>
-											{drivers.givenName} {drivers.familyName}
+											{driver.givenName} {driver.familyName}
 										</li>
 								  ))
-								: driversList.map((drivers) => (
+								: driversList.map((driver) => (
 										<li
-											key={drivers.driverId}
+											key={driver.driverId}
 											className='f1dex__drivers__list__item'
+											onClick={() => getDriverInfo(driver.driverId)}
 										>
-											{drivers.givenName} {drivers.familyName}
+											{driver.givenName} {driver.familyName}
 										</li>
 								  ))}
 						</ul>
 					</div>
 				</div>
-				{/* <div className='f1dex__body__results'>
-					<p>display api results here</p>
-				</div> */}
+				<div className='f1dex__body__results'>
+					{driverInfoData.length > 0 &&
+						driverInfoData.map((driver) => (
+							<div key={driver.driverId}>
+								<h1>
+									{driver.givenName} {driver.familyName}
+								</h1>
+								<p>Code: {driver.code}</p>
+								<p>Nationality: {driver.nationality}</p>
+								<p>Number: {driver.permanentNumber}</p>
+								<p></p>
+							</div>
+						))}
+				</div>
 			</div>
 		</div>
 	);
