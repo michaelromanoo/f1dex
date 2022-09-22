@@ -9,11 +9,12 @@ export const useFetch = (url) => {
 		// abort controller
 		const abort = new AbortController();
 		// fetch api from the url passed
+		// destructure MRData as most API results return MRData
 		fetch(url, { signal: abort.signal })
 			.then((response) => response.json())
-			.then((data) => {
+			.then(({ MRData }) => {
 				setState({
-					data: data,
+					data: MRData,
 					loading: false,
 				});
 			})
@@ -26,5 +27,6 @@ export const useFetch = (url) => {
 		};
 	}, [url, setState]);
 
+	// state returns an object {data: data from api, loading, false}
 	return state;
 };

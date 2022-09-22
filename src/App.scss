@@ -13,6 +13,7 @@
 // desktop styling
 @media (min-width: 768px) {
   .f1dex {
+    gap: 1rem;
       &__body {
           display: flex;
           flex-direction: row;
@@ -54,7 +55,10 @@
             height: 10rem;
             margin: 2px 0;
             padding: 0px;
-            // width: 135px;
+
+            & > li {
+              color: #ffffff;
+            }
         }
 
         .f1dex__drivers__list__item {
