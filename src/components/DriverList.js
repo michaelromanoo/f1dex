@@ -17,12 +17,9 @@ const DriverList = () => {
 		fullName: obj.givenName + ' ' + obj.familyName,
 	}));
 
-	console.log('drivers', drivers);
-
 	// filter api results with search term
 	const filterApiResults = (val) => {
 		let filteredArr = drivers.filter((driver) => driver.fullName.includes(val));
-		console.log('filtered arr', filteredArr);
 		return setFilteredArr(filteredArr);
 	};
 

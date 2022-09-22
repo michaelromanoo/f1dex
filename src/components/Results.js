@@ -7,7 +7,7 @@ const Result = ({ id }) => {
 		`http://ergast.com/api/f1/drivers/${id}.json`
 	);
 
-	// make spinner
+	// TODO: make spinner
 	if (driverInfoLoading) return <div>Loading...</div>;
 
 	const driverInfoData = driverInfo.DriverTable.Drivers;
