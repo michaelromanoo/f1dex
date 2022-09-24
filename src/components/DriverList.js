@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useFetch } from '../api/useFetch';
 import Result from './Results';
+import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
 
 const DriverList = () => {
 	const { data, loading } = useFetch(
@@ -9,7 +10,7 @@ const DriverList = () => {
 	const [filteredArr, setFilteredArr] = useState([]);
 	const [driverId, setDriverId] = useState('albon');
 
-	if (loading) return <div>Loading...</div>;
+	if (loading) return <LoadingSpinner />;
 
 	// create new array from api and add new property for full name
 	const drivers = data.DriverTable.Drivers.map((obj) => ({

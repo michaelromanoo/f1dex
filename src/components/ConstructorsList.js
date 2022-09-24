@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useFetch } from '../api/useFetch';
+import LoadingSpinner from '../components/LoadingSpinner/LoadingSpinner';
 import ConstructorsResult from './ConstructorResult';
 
 const ConstructorsList = () => {
@@ -9,7 +10,7 @@ const ConstructorsList = () => {
 	const [filteredArr, setFilteredArr] = useState([]);
 	const [constructorId, setConstructorId] = useState('alfa');
 
-	if (loading) return <div>Loading...</div>;
+	if (loading) return <LoadingSpinner />;
 
 	const constructors = data.ConstructorTable.Constructors;
 

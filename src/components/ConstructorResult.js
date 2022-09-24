@@ -1,4 +1,5 @@
 import { useFetch } from '../api/useFetch';
+import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
 import '../App.scss';
 
 const ConstructorResult = ({ id }) => {
@@ -7,7 +8,7 @@ const ConstructorResult = ({ id }) => {
 		`http://ergast.com/api/f1/constructors/${id}.json`
 	);
 
-	if (loading) return <div>Loading...</div>;
+	if (loading) return <LoadingSpinner />;
 
 	const constructorInfoData = data.ConstructorTable.Constructors;
 

@@ -1,4 +1,5 @@
 import { useFetch } from '../api/useFetch';
+import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
 import '../App.scss';
 
 const Result = ({ id }) => {
@@ -8,7 +9,7 @@ const Result = ({ id }) => {
 	);
 
 	// TODO: make spinner
-	if (driverInfoLoading) return <div>Loading...</div>;
+	if (driverInfoLoading) return <LoadingSpinner />;
 
 	const driverInfoData = driverInfo.DriverTable.Drivers;
 
