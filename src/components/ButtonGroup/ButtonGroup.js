@@ -1,6 +1,8 @@
+import './ButtonGroup.scss';
+
 const ButtonGroup = ({ getType }) => {
 	return (
-		<div>
+		<div className='f1dex__buttons'>
 			<button
 				onClick={() => {
 					getType('constructors');
