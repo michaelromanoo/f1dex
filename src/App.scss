@@ -34,10 +34,16 @@
           &__search {
               display: flex;
               flex-direction: column;
-              // align-items: center;
+              width: 50%;
 
               &__input, &__results {
                   flex: 1;
+              }
+
+              &__input {
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
               }
 
               .input {
@@ -46,6 +52,10 @@
                 border: 1px solid #878787;
                 color: #ffffff;
               }
+          }
+
+          &__results {
+            width: 50%;
           }
 
           
@@ -78,6 +88,10 @@
         .f1dex__body__results {
           h1, p {
             color: #ffffff;
+          }
+
+          h1 {
+            font-size: 1rem;
           }
         }
       }

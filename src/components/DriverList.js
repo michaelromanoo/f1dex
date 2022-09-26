@@ -4,8 +4,9 @@ import Result from './Results';
 import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
 
 const DriverList = () => {
+	const [year, setYear] = useState(2022);
 	const { data, loading } = useFetch(
-		`http://ergast.com/api/f1/2022/drivers.json`
+		`http://ergast.com/api/f1/${year}/drivers.json`
 	);
 	const [filteredArr, setFilteredArr] = useState([]);
 	const [driverId, setDriverId] = useState('albon');
@@ -41,6 +42,17 @@ const DriverList = () => {
 						placeholder='Insert text here...'
 						onChange={(e) => filterApiResults(e.target.value)}
 					/>
+					<select
+						name='year'
+						id='year-select'
+						onChange={(e) => setYear(Number(e.target.value))}
+					>
+						<option value='2022'>2022</option>
+						<option value='2021'>2021</option>
+						<option value='2020'>2020</option>
+						<option value='2019'>2019</option>
+						<option value='2018'>2018</option>
+					</select>
 				</div>
 				<div className='f1dex__body__search__results'>
 					<ul className='f1dex__drivers__list'>
