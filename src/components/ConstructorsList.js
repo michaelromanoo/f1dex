@@ -1,18 +1,28 @@
 import { useState } from 'react';
-import { useFetch } from '../api/useFetch';
+import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from '../components/LoadingSpinner/LoadingSpinner';
 import ConstructorsResult from './ConstructorResult';
 
 const ConstructorsList = () => {
-	const { data, loading } = useFetch(
-		'http://ergast.com/api/f1/2022/constructors.json'
+	// const { data, loading } = useFetch(
+	// 	'http://ergast.com/api/f1/2022/constructors.json'
+	// );
+	const fetchConstructors = async () => {
+		const res = await fetch('http://ergast.com/api/f1/2022/constructors.json');
+		return res.json();
+	};
+
+	const { isLoading, isError, data, error } = useQuery(
+		['constructors'],
+		fetchConstructors
 	);
 	const [filteredArr, setFilteredArr] = useState([]);
 	const [constructorId, setConstructorId] = useState('alfa');
 
-	if (loading) return <LoadingSpinner />;
+	if (isLoading) return <LoadingSpinner />;
+	if (isError) return <div>Error: {error.message}</div>;
 
-	const constructors = data.ConstructorTable.Constructors;
+	const constructors = data.MRData.ConstructorTable.Constructors;
 
 	// TODO: convert into a custom hook => return loading & data
 	// filter api results with search term

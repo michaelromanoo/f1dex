@@ -1,20 +1,29 @@
 import { useState } from 'react';
-import { useFetch } from '../api/useFetch';
+import { useQuery } from '@tanstack/react-query';
 import Result from './Results';
 import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
 
 const DriverList = () => {
 	const [year, setYear] = useState(2022);
-	const { data, loading } = useFetch(
-		`http://ergast.com/api/f1/${year}/drivers.json`
+
+	const fetchDrivers = async (year) => {
+		const res = await fetch(`http://ergast.com/api/f1/${year}/drivers.json`);
+		return res.json();
+	};
+
+	const { isLoading, isError, error, data } = useQuery(['drivers', year], () =>
+		fetchDrivers(year)
 	);
+
 	const [filteredArr, setFilteredArr] = useState([]);
 	const [driverId, setDriverId] = useState('albon');
 
-	if (loading) return <LoadingSpinner />;
+	if (isLoading) return <LoadingSpinner />;
+
+	if (isError) return <div>Error {error.message}</div>;
 
 	// create new array from api and add new property for full name
-	const drivers = data.DriverTable.Drivers.map((obj) => ({
+	const drivers = data.MRData.DriverTable.Drivers.map((obj) => ({
 		...obj,
 		fullName: obj.givenName + ' ' + obj.familyName,
 	}));
@@ -45,6 +54,7 @@ const DriverList = () => {
 					<select
 						name='year'
 						id='year-select'
+						value={year}
 						onChange={(e) => setYear(Number(e.target.value))}
 					>
 						<option value='2022'>2022</option>
