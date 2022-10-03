@@ -1,19 +1,11 @@
 import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useFetchDrivers } from '../api/api';
 import Result from './Results';
 import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
 
 const DriverList = () => {
 	const [year, setYear] = useState(2022);
-
-	const fetchDrivers = async (year) => {
-		const res = await fetch(`http://ergast.com/api/f1/${year}/drivers.json`);
-		return res.json();
-	};
-
-	const { isLoading, isError, error, data } = useQuery(['drivers', year], () =>
-		fetchDrivers(year)
-	);
+	const { isLoading, isError, error, data } = useFetchDrivers(year);
 
 	const [filteredArr, setFilteredArr] = useState([]);
 	const [driverId, setDriverId] = useState('albon');

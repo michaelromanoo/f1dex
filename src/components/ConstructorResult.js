@@ -1,22 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
+import { useFetchConstructorsInfo } from '../api/api';
 import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
 import '../App.scss';
 
 const ConstructorResult = ({ id }) => {
-	// fetch constructor info by constructor id
-	// const { data, loading } = useFetch(
-	// 	`http://ergast.com/api/f1/constructors/${id}.json`
-	// );
-
-	const fetchConstructors = async () => {
-		const res = await fetch(`http://ergast.com/api/f1/constructors/${id}.json`);
-		return res.json();
-	};
-
-	const { isLoading, isError, data, error } = useQuery(
-		['constructorsInfo'],
-		fetchConstructors
-	);
+	const { isLoading, isError, data, error } = useFetchConstructorsInfo(id);
 
 	if (isLoading) return <LoadingSpinner />;
 

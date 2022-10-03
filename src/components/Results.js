@@ -1,23 +1,10 @@
+import { useFetchDriverInfo } from '../api/api';
 import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
 import '../App.scss';
-import { useQuery } from '@tanstack/react-query';
 
 const Result = ({ id }) => {
-	// fetch driver info by driver id
-	// const { data: driverInfo, loading: driverInfoLoading } = useFetch(
-	// 	`http://ergast.com/api/f1/drivers/${id}.json`
-	// );
+	const { isLoading, isError, data, error } = useFetchDriverInfo(id);
 
-	const fetchDriverInfo = async (id) => {
-		const res = await fetch(`http://ergast.com/api/f1/drivers/${id}.json`);
-		return res.json();
-	};
-
-	const { isLoading, isError, data, error } = useQuery(['driverInfo', id], () =>
-		fetchDriverInfo(id)
-	);
-
-	// TODO: make spinner
 	if (isLoading) return <LoadingSpinner />;
 
 	if (isError) return <div>Error {error.message}</div>;

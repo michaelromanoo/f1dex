@@ -1,21 +1,10 @@
 import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useFetchConstructors } from '../api/api';
 import LoadingSpinner from '../components/LoadingSpinner/LoadingSpinner';
 import ConstructorsResult from './ConstructorResult';
 
 const ConstructorsList = () => {
-	// const { data, loading } = useFetch(
-	// 	'http://ergast.com/api/f1/2022/constructors.json'
-	// );
-	const fetchConstructors = async () => {
-		const res = await fetch('http://ergast.com/api/f1/2022/constructors.json');
-		return res.json();
-	};
-
-	const { isLoading, isError, data, error } = useQuery(
-		['constructors'],
-		fetchConstructors
-	);
+	const { isLoading, isError, data, error } = useFetchConstructors();
 	const [filteredArr, setFilteredArr] = useState([]);
 	const [constructorId, setConstructorId] = useState('alfa');
 
