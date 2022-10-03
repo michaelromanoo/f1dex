@@ -18,7 +18,12 @@ function App() {
 			<div className='f1dex__header'>
 				<img src={logo} alt='Formula 1 Logo' />
 			</div>
-			<ButtonGroup getType={getType} />
+			<div>
+				<ButtonGroup getType={getType} />
+			</div>
+			<div className='f1dex__wheel'>
+				<img src={wheel} alt='wheel' />
+			</div>
 			<div className='f1dex__body'>
 				<Body listType={type} />
 			</div>
