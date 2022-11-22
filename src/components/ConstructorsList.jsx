@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useFetchConstructors } from '../api/api';
-import LoadingSpinner from '../components/LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
 import ConstructorsResult from './ConstructorResult';
 
 const ConstructorsList = () => {
