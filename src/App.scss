@@ -17,19 +17,19 @@
 		gap: 1rem;
 		&__wheel {
 			img {
-				width: 1000px;
+				width: 880px;
 			}
 		}
 		&__body {
 			position: absolute;
-			top: 390px;
+			top: 375px;
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
 			align-items: center;
 			// padding: 0.5rem;
 			gap: 1rem;
-			width: 21rem;
+			width: 19rem;
 			// width: 50%;
 			border-radius: 10px;
 			background-color: rgba(43, 33, 33, 0.9);
