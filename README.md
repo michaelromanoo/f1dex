@@ -26,5 +26,6 @@ $ npm start
 ## Future Goals
 
 Add more filter options such as:
-• View all drivers for a given team in a given year
-• View driver standings in a given year
+
+- View all drivers for a given team in a given year
+- View driver standings in a given year
