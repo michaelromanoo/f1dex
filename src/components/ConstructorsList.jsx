@@ -40,7 +40,9 @@ const ConstructorsList = () => {
 						onChange={(e) => filterApiResults(e.target.value)}
 					/>
 				</div>
-				<div className='f1dex__body__search__results'>
+			</div>
+			<div className='f1dex__body__results'>
+				<div className='f1dex__body__results__list'>
 					<ul className='f1dex__drivers__list'>
 						{filteredArr.length > 0
 							? filteredArr.map((constructor) => (
@@ -67,8 +69,9 @@ const ConstructorsList = () => {
 							  ))}
 					</ul>
 				</div>
+
+				<ConstructorsResult id={constructorId} />
 			</div>
-			<ConstructorsResult id={constructorId} />
 		</>
 	);
 };

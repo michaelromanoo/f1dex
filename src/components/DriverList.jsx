@@ -34,29 +34,29 @@ const DriverList = () => {
 	return (
 		<>
 			<div className='f1dex__body__search'>
-				<div className='f1dex__body__search__input'>
-					<input
-						className='input'
-						type='search'
-						id='search'
-						name='search'
-						placeholder='Insert text here...'
-						onChange={(e) => filterApiResults(e.target.value)}
-					/>
-					<select
-						name='year'
-						id='year-select'
-						value={year}
-						onChange={(e) => setYear(Number(e.target.value))}
-					>
-						<option value='2022'>2022</option>
-						<option value='2021'>2021</option>
-						<option value='2020'>2020</option>
-						<option value='2019'>2019</option>
-						<option value='2018'>2018</option>
-					</select>
-				</div>
-				<div className='f1dex__body__search__results'>
+				<input
+					className='input'
+					type='search'
+					id='search'
+					name='search'
+					placeholder='Insert text here...'
+					onChange={(e) => filterApiResults(e.target.value)}
+				/>
+				<select
+					name='year'
+					id='year-select'
+					value={year}
+					onChange={(e) => setYear(Number(e.target.value))}
+				>
+					<option value='2022'>2022</option>
+					<option value='2021'>2021</option>
+					<option value='2020'>2020</option>
+					<option value='2019'>2019</option>
+					<option value='2018'>2018</option>
+				</select>
+			</div>
+			<div className='f1dex__body__results'>
+				<div className='f1dex__body__results__list'>
 					<ul className='f1dex__drivers__list'>
 						{filteredArr.length > 0
 							? filteredArr.map((driver) => (
@@ -79,8 +79,8 @@ const DriverList = () => {
 							  ))}
 					</ul>
 				</div>
+				<Result id={driverId} />
 			</div>
-			<Result id={driverId} />
 		</>
 	);
 };

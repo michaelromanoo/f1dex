@@ -3,10 +3,92 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	gap: 1.5rem;
+
+	&__header {
+		// TODO: change logo image height
+		img {
+			height: 150px;
+		}
+	}
 
 	&__body {
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		// gap: 1rem;
+		width: 22rem;
+		border-radius: 10px;
+		background-color: rgba(43, 33, 33, 0.9);
+
+		&__search {
+			display: flex;
+			flex-direction: row;
+			gap: 1rem;
+
+			&__input,
+			&__results {
+				flex: 1;
+			}
+
+			&__input {
+				display: flex;
+				flex-direction: row;
+				gap: 1rem;
+			}
+
+			.input {
+				// width: 100%;
+				background-color: #000000;
+				border: 1px solid #878787;
+				color: #ffffff;
+			}
+		}
+
+		&__results {
+			display: flex;
+			flex-direction: row;
+			gap: 0.5rem;
+			// width: 50%;
+		}
+
+		.f1dex__drivers__list {
+			list-style: none;
+			overflow: hidden scroll;
+			height: 10rem;
+			margin: 2px 0;
+			padding: 0px;
+
+			& > li {
+				color: #ffffff;
+			}
+		}
+
+		.f1dex__drivers__list__item {
+			color: #ffffff;
+			cursor: pointer;
+			background-color: #000000;
+			border: 2px solid #878787;
+			border-radius: 10px;
+			// width: 21rem;
+			margin-bottom: 5px;
+
+			// p {
+			//   padding: 0.5rem;
+			// }
+		}
+
+		.f1dex__body__results {
+			h1,
+			p {
+				color: #ffffff;
+			}
+
+			h1 {
+				font-size: 1rem;
+			}
+		}
 	}
 }
 
@@ -18,23 +100,25 @@
 		&__wheel {
 			img {
 				width: 880px;
+				// display: none;
 			}
 		}
+
+		&__header {
+			// TODO: change logo image height
+		}
+
 		&__body {
 			position: absolute;
-			top: 375px;
+			top: 335px;
 			display: flex;
-			flex-direction: row;
+			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			// padding: 0.5rem;
-			gap: 1rem;
+			// gap: 1rem;
 			width: 19rem;
-			// width: 50%;
 			border-radius: 10px;
 			background-color: rgba(43, 33, 33, 0.9);
-			// position: absolute;
-			// top: 120%;
 
 			// &__search, &__results {
 			//   flex: 1;
@@ -42,8 +126,8 @@
 
 			&__search {
 				display: flex;
-				flex-direction: column;
-				width: 50%;
+				flex-direction: row;
+				gap: 1rem;
 
 				&__input,
 				&__results {
@@ -65,7 +149,10 @@
 			}
 
 			&__results {
-				width: 50%;
+				display: flex;
+				flex-direction: row;
+				gap: 0.5rem;
+				// width: 50%;
 			}
 
 			.f1dex__drivers__list {
