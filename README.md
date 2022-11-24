@@ -4,7 +4,7 @@ F1dex is a simple website that uses an external [Formula 1 API](http://ergast.co
 
 ## Installation & Usage
 
-To view the deployed website, you can visit the website [here].(https://f1dex.vercel.app/)
+To view the deployed website, you can visit the website [here](https://f1dex.vercel.app/)
 
 To run the project locally, run the following commands:
 
