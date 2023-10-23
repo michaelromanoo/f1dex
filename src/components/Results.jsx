@@ -11,8 +11,9 @@ const Result = ({ id }) => {
 
 	const driverInfoData = data.MRData.DriverTable.Drivers;
 
+	// TODO: display first driver when the year changes
 	return (
-		<div className='f1dex__body__results'>
+		<div className='f1dex__results__list'>
 			{driverInfoData.length > 0 &&
 				driverInfoData.map((driver) => (
 					<div key={driver.driverId}>
